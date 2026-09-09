@@ -1,14 +1,15 @@
-resource "proxmox_virtual_environment_file" "cloud_init_test_user_data" {
+resource "proxmox_virtual_environment_file" "cloud_config" {
   content_type = "snippets"
   node_name    = "pve"
   datastore_id = "local"
 
   source_raw {
-    data = templatefile("${abspath(path.root)}/user_data/cloud-init-user-data.pkrtpl.hcl", {
+    data = templatefile("${abspath(path.root)}/user_data/cloud-config.pkrtpl.hcl", {
       hostname           = "cloud-init-test"
       ssh_authorized_key = trimspace(data.local_file.ssh_public_key.content)
+      user_script_base64 = filebase64("${abspath(path.root)}/user_data/test-script.sh")
     })
-    file_name = "cloud-init-user-data.yaml"
+    file_name = "cloud-config.yaml"
   }
 }
 
@@ -32,7 +33,7 @@ resource "proxmox_virtual_environment_vm" "cloud-init-test" {
       }
     }
 
-    user_data_file_id = proxmox_virtual_environment_file.cloud_init_test_user_data.id
+    user_data_file_id = proxmox_virtual_environment_file.cloud_config.id
   }
 
   memory {
