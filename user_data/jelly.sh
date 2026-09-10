@@ -16,11 +16,5 @@ mnt_string="$nfs_path    $media_dir    nfs auto,nofail,x-systemd.automount,x-sys
 
 mkdir "$media_dir"
 echo "$mnt_string" | tee -a /etc/fstab
-#
-# Not sure I'll need this or not
-#sudo systemctl daemon-reload
 mount -a
 
-#sudo systemctl status jellyfin
-#sudo systemctl reload jellyfin
-#sudo systemctl restart jellyfin
