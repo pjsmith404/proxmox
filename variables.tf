@@ -13,3 +13,7 @@ variable "pve_password" {
   description = "The PVE password to use against the API"
 }
 
+variable "ansible_pub_key" {
+  type = string
+  description = "The public key for ansible"
+}

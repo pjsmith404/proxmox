@@ -11,6 +11,13 @@ users:
     ssh_authorized_keys:
       - ${ssh_authorized_key}
     sudo: ALL=(ALL) NOPASSWD:ALL
+  - name: ansible
+    groups:
+      - sudo
+    shell: /bin/bash
+    ssh_authorized_keys:
+      - ${ansible_pub_key}
+    sudo: ALL=(ALL) NOPASSWD:ALL
 
 package_reboot_if_required: true
 package_update: true

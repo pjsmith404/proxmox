@@ -7,9 +7,10 @@ resource "proxmox_virtual_environment_file" "cloud_config" {
     data = templatefile("${abspath(path.root)}/user_data/cloud-config.pkrtpl.hcl", {
       hostname           = "cloud-init-test"
       ssh_authorized_key = trimspace(data.local_file.ssh_public_key.content)
+      ansible_pub_key = var.ansible_pub_key
       user_script_base64 = filebase64("${abspath(path.root)}/user_data/test-script.sh")
     })
-    file_name = "cloud-config.yaml"
+    file_name = "cloud-config-cloud-init-test.yaml"
   }
 }
 
