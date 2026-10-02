@@ -1,5 +1,5 @@
 resource "proxmox_virtual_environment_vm" "jelly" {
-  name = "jelly"
+  name      = "jelly"
   node_name = "pve"
 
   agent {
@@ -10,7 +10,7 @@ resource "proxmox_virtual_environment_vm" "jelly" {
 
   cpu {
     cores = 4
-    type = "x86-64-v2-AES"
+    type  = "x86-64-v2-AES"
   }
 
   memory {

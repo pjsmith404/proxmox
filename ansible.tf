@@ -7,7 +7,7 @@ resource "proxmox_virtual_environment_file" "ansible_config" {
     data = templatefile("${abspath(path.root)}/user_data/cloud-config.pkrtpl.hcl", {
       hostname           = "ansible"
       ssh_authorized_key = trimspace(data.local_file.ssh_public_key.content)
-      ansible_pub_key = var.ansible_pub_key
+      ansible_pub_key    = var.ansible_pub_key
       user_script_base64 = filebase64("${abspath(path.root)}/user_data/ansible.sh")
     })
     file_name = "cloud-config-ansible.yaml"
@@ -15,7 +15,7 @@ resource "proxmox_virtual_environment_file" "ansible_config" {
 }
 
 resource "proxmox_virtual_environment_vm" "ansible" {
-  name = "ansible"
+  name      = "ansible"
   node_name = "pve"
 
   agent {

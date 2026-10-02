@@ -14,6 +14,6 @@ variable "pve_password" {
 }
 
 variable "ansible_pub_key" {
-  type = string
+  type        = string
   description = "The public key for ansible"
 }

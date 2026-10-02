@@ -1,5 +1,5 @@
 resource "proxmox_virtual_environment_vm" "nginx" {
-  name = "nginx"
+  name      = "nginx"
   node_name = "pve"
 
   agent {
@@ -10,7 +10,7 @@ resource "proxmox_virtual_environment_vm" "nginx" {
 
   cpu {
     cores = 1
-    type = "x86-64-v2-AES"
+    type  = "x86-64-v2-AES"
   }
 
   memory {
